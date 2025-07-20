@@ -22,6 +22,12 @@ public class DemoController {
         this.myCoach = myCoach;
     }
 
+    // Setter Injection
+    /*@Autowired
+    public void setCoach(Coach myCoach) {
+        this.myCoach = myCoach;
+    }*/
+
     @GetMapping("/")
     public String sayHello() {
         return "Hello World!";
