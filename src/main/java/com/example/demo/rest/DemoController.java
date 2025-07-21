@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DemoController {
 
-    @Value("${coach.name}")
+    @Value("${coach.name}") // Gets a value set on the application.properties file.
     private String coachName;
 
     @Value("${team.name}")
@@ -18,16 +18,21 @@ public class DemoController {
 
     private Coach myCoach;
 
+    // Constructor injection
+    // @Autowired - Automatically creates objects and inject dependencies.
+    // @Qualifier - Determines the implementation that will be used.
     @Autowired
     public DemoController(@Qualifier("cricketCoach") Coach myCoach) {
         this.myCoach = myCoach;
     }
 
-    // Setter Injection
-    /*@Autowired
+    // Setter injection
+    /*
+    @Autowired
     public void setCoach(Coach myCoach) {
         this.myCoach = myCoach;
-    }*/
+    }
+    */
 
     @GetMapping("/")
     public String sayHello() {
