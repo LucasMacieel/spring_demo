@@ -19,7 +19,7 @@ public class DemoApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
 		return runner -> {
-			updateStudent(studentDAO);
+			deleteAllStudents(studentDAO);
 		};
 	}
 
@@ -89,5 +89,21 @@ public class DemoApplication {
 		studentDAO.update(student);
 
 		System.out.println("Updated student: " + student);
+	}
+
+	private void deleteStudent(StudentDAO studentDAO) {
+		int studentId = 4;
+
+		System.out.println("Deleting student id: " + studentId);
+
+		studentDAO.delete(studentId);
+	}
+
+	private void deleteAllStudents(StudentDAO studentDAO) {
+		System.out.println("Deleting all students");
+
+		int deletedRowCount = studentDAO.deleteAll();
+
+		System.out.println("Deleted row count: " + deletedRowCount);
 	}
 }
